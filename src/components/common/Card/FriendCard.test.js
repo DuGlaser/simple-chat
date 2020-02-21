@@ -13,4 +13,5 @@ test("renders learn react link", () => {
   expect(wrapper.find(FriendCard).length).toBe(1);
   expect(wrapper.find(Name).length).toBe(1);
   expect(wrapper.find(Div).length).toBe(1);
+  expect(wrapper.find(Name).text()).toBe("DuGlaser");
 });
