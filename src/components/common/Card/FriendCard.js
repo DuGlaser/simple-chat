@@ -30,7 +30,7 @@ const FriendCard = props => {
   return (
     <Div {...props}>
       <Img src={props.src} />
-      <Name>props.name</Name>
+      <Name>{props.name}</Name>
     </Div>
   );
 };
