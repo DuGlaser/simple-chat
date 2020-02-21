@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Div = styled.div(
+export const Div = styled.div(
   {
     margin: "0",
     padding: "0"
@@ -12,11 +12,11 @@ const Div = styled.div(
   })
 );
 
-const Img = styled.img({
+export const Img = styled.img({
   height: "100%"
 });
 
-const Name = styled.p(
+export const Name = styled.p(
   {
     // TODO: ADD font size etc...
     // fontsize: "16px"
