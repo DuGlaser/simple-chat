@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 
 export const P = styled.p({
   fontSize: "24px",
-  fontWeight: "bold",
-  color: "#f00",
+  color: "#fffffe",
   textAlign: "center",
   "&:after,&:before": {
     content: '""',
@@ -12,7 +11,7 @@ export const P = styled.p({
     width: "50px",
     height: "2px",
     margin: "0 8px",
-    backgroundColor: "#f00",
+    backgroundColor: "#fffffe",
     verticalAlign: "middle"
   }
 });
