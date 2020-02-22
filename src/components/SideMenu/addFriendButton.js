@@ -14,6 +14,7 @@ export const Button = styled.button({
   color: "#e53170",
   textDecoration: "none",
   outline: "none",
+  margin: "0 auto",
   "&:active": {
     transform: "translateY(4px)",
     boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.2)",
