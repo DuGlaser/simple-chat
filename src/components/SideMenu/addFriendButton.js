@@ -3,14 +3,22 @@ import { Icon } from "@iconify/react";
 import bxUserPlus from "@iconify/icons-bx/bx-user-plus";
 import styled from "@emotion/styled";
 
-export const Div = styled.div({
+export const Button = styled.button({
   width: "220px",
   height: "60px",
   borderTopRightRadius: "16px",
   backgroundColor: "#FFFFFE",
   boxShadow: "0px 4px 4px rgba(0,0,0,.25)",
+  border: "none",
   display: "flex",
-  color: "#e53170"
+  color: "#e53170",
+  textDecoration: "none",
+  outline: "none",
+  "&:active": {
+    transform: "translateY(4px)",
+    boxShadow: "0px 0px 1px rgba(0, 0, 0, 0.2)",
+    border: "none"
+  }
 });
 
 // TODO: fontsize px -> rem
@@ -24,10 +32,10 @@ export const P = styled.p({
 
 const AddFriendButton = () => {
   return (
-    <Div>
+    <Button>
       <Icon icon={bxUserPlus} style={{ color: "#e53170", fontSize: "60px" }} />
       <P>ADD FRIEND!!</P>
-    </Div>
+    </Button>
   );
 };
 
