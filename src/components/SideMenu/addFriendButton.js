@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import bxUserPlus from "@iconify/icons-bx/bx-user-plus";
 import styled from "@emotion/styled";
 
-const Div = styled.div({
+export const Div = styled.div({
   width: "220px",
   height: "60px",
   borderTopRightRadius: "16px",
@@ -14,7 +14,7 @@ const Div = styled.div({
 });
 
 // TODO: fontsize px -> rem
-const P = styled.p({
+export const P = styled.p({
   display: "inline-block",
   lineHeight: "60px",
   margin: "0 auto",
