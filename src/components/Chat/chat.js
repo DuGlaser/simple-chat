@@ -23,9 +23,7 @@ const ChatComponent = props => {
       <ChatArea>
         {props.loading && <p>loading</p>}
         {!props.loading &&
-          props.values
-            .reverse()
-            .map(value => <MessageTile message={value.message} />)}
+          props.values.map(value => <MessageTile message={value.message} />)}
       </ChatArea>
       <SendForm />
     </Div>
