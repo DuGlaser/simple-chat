@@ -16,18 +16,20 @@ const ChatArea = styled.div({
   flexGrow: "1"
 });
 
-const Chat = props => {
+const ChatComponent = props => {
   return (
     <Div>
       <RoomHeader roomName="DuGlaser" />
       <ChatArea>
-        {/* {props.message.map(message => ( */}
-        {/*   <MessageTile message={message.body} /> */}
-        {/* ))} */}
+        {props.loading && <p>loading</p>}
+        {!props.loading &&
+          props.values
+            .reverse()
+            .map(value => <MessageTile message={value.message} />)}
       </ChatArea>
       <SendForm />
     </Div>
   );
 };
 
-export default Chat;
+export default ChatComponent;
