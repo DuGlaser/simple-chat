@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import { UserContext } from "./context";
 import Chat from "./components/Chat/index";
 import styled from "@emotion/styled";
-import Side from "./components/SideMenu/side";
+import Side from "./components/SideMenu/index";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -67,16 +68,18 @@ function App() {
       )}
 
       {user && (
-        <Flex>
-          <Div2>
-            <Side />
-          </Div2>
-          <Div8>
-            {/* TODO:ADD router */}
-            <Route exact path="/" component={Home} />
-            <Route path="/chat" component={Chat} />
-          </Div8>
-        </Flex>
+        <UserContext.Provider value={user}>
+          <Flex>
+            <Div2>
+              <Side />
+            </Div2>
+            <Div8>
+              {/* TODO:ADD router */}
+              <Route exact path="/" component={Home} />
+              <Route path="/chat/:roomId" component={Chat} />
+            </Div8>
+          </Flex>
+        </UserContext.Provider>
       )}
     </BrowserRouter>
   );
