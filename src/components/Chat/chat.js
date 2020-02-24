@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RoomHeader from "./roomHeader";
 import styled from "@emotion/styled";
 import MessageTile from "./messageTile";
@@ -17,6 +17,13 @@ const ChatArea = styled.div({
 });
 
 const ChatComponent = props => {
+  const [message, setMessage] = useState();
+
+  const sendMessage = () => {
+    if (String(message).trim()) {
+      console.log(message);
+    }
+  };
   return (
     <Div>
       <RoomHeader roomName="DuGlaser" />
@@ -25,7 +32,7 @@ const ChatComponent = props => {
         {!props.loading &&
           props.values.map(value => <MessageTile message={value.message} />)}
       </ChatArea>
-      <SendForm />
+      <SendForm setMessage={setMessage} sendMessage={sendMessage} />
     </Div>
   );
 };
