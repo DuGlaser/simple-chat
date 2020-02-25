@@ -31,7 +31,7 @@ const FriendsList = props => {
     );
   } else if (error) {
     return <div>error</div>;
-  } else {
+  } else if (loading) {
     return <div>loading...</div>;
   }
 };

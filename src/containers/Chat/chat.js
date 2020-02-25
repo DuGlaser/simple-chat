@@ -19,6 +19,7 @@ const ChatContainer = () => {
   return (
     <ChatComponent
       values={values}
+      error={error}
       loading={loading}
       roomName={roomName}
       roomId={roomId}
