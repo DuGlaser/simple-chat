@@ -1,7 +1,13 @@
 import React from "react";
 import FriendCard from "../common/Card/FriendCard";
+import styled from "@emotion/styled";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../../config/firebaseConfig";
+
+const Space = styled.div({
+  width: "100%",
+  height: "20px"
+});
 
 const FriendsList = props => {
   const [friends, loading, error] = useCollectionData(
@@ -17,14 +23,17 @@ const FriendsList = props => {
       <>
         {friends.map(friend => {
           return (
-            <FriendCard
-              width="200px"
-              height="40px"
-              key={friend.id}
-              name={friend.name}
-              src={friend.avater}
-              roomId={friend.roomId}
-            />
+            <>
+              <Space />
+              <FriendCard
+                width="200px"
+                height="40px"
+                key={friend.id}
+                name={friend.name}
+                src={friend.avater}
+                roomId={friend.roomId}
+              />
+            </>
           );
         })}
       </>
