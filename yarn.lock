@@ -1984,6 +1984,11 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@iconify/icons-ant-design@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-ant-design/-/icons-ant-design-1.0.6.tgz#6106f406d66e59780fd8267bfb249cb9108b54f4"
+  integrity sha512-l4mURz1vcM8ZOI4lqvwTU60Jzq+OyepcDQzBM7RJbS4gUo2lu5xsf8qlMkJVdRv4K7CJS6qEVbFivrGtH1FEDA==
+
 "@iconify/icons-bx@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@iconify/icons-bx/-/icons-bx-1.0.1.tgz#8401e6915ffa0a35c04b3ba3199b1709ff2e91c4"
