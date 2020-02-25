@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { UserContext } from "./context";
 import Chat from "./components/Chat/index";
 import styled from "@emotion/styled";
@@ -10,10 +10,21 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { db } from "./config/firebaseConfig";
 import AddFriend from "./components/AddFriend/index";
+import ClipLoader from "react-spinners/ClipLoader";
+import { Icon } from "@iconify/react";
+import bxLogIn from "@iconify/icons-bx/bx-log-in";
 
 const Flex = styled.div({
   display: "flex",
   width: "100%"
+});
+
+const Center = styled.div({
+  width: "100%",
+  height: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
 });
 
 const Div2 = styled.div({
@@ -22,6 +33,11 @@ const Div2 = styled.div({
 
 const Div8 = styled.div({
   width: "calc(100% - 280px)"
+});
+
+const Wrapper = styled.div({
+  display: "flex",
+  cursor: "pointer"
 });
 
 function App() {
@@ -50,23 +66,37 @@ function App() {
   };
 
   if (initialising) {
-    return <div>loading...</div>;
+    return (
+      <Center>
+        <ClipLoader size="60px" />
+      </Center>
+    );
   }
 
   if (error) {
-    return <div>error</div>;
+    return (
+      <Center>
+        error
+        <span role="img" aria-label="thinking">
+          🤔
+        </span>
+      </Center>
+    );
   }
 
   return (
     <BrowserRouter>
       {!user && (
-        <button
-          onClick={() => {
-            login();
-          }}
-        >
-          Google login
-        </button>
+        <Center>
+          <Wrapper
+            onClick={() => {
+              login();
+            }}
+          >
+            <div>Googleアカウントでログイン</div>
+            <Icon icon={bxLogIn} />
+          </Wrapper>
+        </Center>
       )}
 
       {user && (
@@ -77,7 +107,6 @@ function App() {
             </Div2>
             <Div8>
               {/* TODO:ADD router */}
-              <Route exact path="/" component={Home} />
               <Route path="/chat/:roomId/:roomName" component={Chat} />
               <Route exact path="/addfriend" component={AddFriend} />
             </Div8>
@@ -87,23 +116,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-const Home = () => {
-  const logout = () => {
-    firebase.auth().signOut();
-  };
-  return (
-    <div>
-      <Link to="/chat">Chat</Link>
-      <button
-        onClick={() => {
-          logout();
-        }}
-      >
-        Google logout
-      </button>
-    </div>
-  );
-};
 
 export default App;
