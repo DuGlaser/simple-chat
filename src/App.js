@@ -9,6 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { db } from "./config/firebaseConfig";
+import AddFriend from "./components/AddFriend/index";
 
 const Flex = styled.div({
   display: "flex",
@@ -78,6 +79,7 @@ function App() {
               {/* TODO:ADD router */}
               <Route exact path="/" component={Home} />
               <Route path="/chat/:roomId/:roomName" component={Chat} />
+              <Route exact path="/addfriend" component={AddFriend} />
             </Div8>
           </Flex>
         </UserContext.Provider>
