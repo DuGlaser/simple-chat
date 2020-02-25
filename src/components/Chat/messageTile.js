@@ -32,7 +32,8 @@ export const UserName = styled.p({
 
 export const Message = styled.p({
   fontSize: "18px",
-  margin: "0"
+  margin: "0",
+  whiteSpace: "pre"
 });
 
 const MessageTile = props => {
