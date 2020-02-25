@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 export const Header = styled.header({
   width: "100%",
-  height: "80px",
   padding: "30px",
   borderBottom: "1px solid #c4c4c4"
 });

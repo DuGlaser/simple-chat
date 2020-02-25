@@ -2,6 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import bxUserPlus from "@iconify/icons-bx/bx-user-plus";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Button = styled.button({
   width: "220px",
@@ -33,10 +34,15 @@ export const P = styled.p({
 
 const AddFriendButton = () => {
   return (
-    <Button>
-      <Icon icon={bxUserPlus} style={{ color: "#e53170", fontSize: "60px" }} />
-      <P>ADD FRIEND!!</P>
-    </Button>
+    <Link to="addfriend" style={{ decoration: "none", textDecoration: "none" }}>
+      <Button>
+        <Icon
+          icon={bxUserPlus}
+          style={{ color: "#e53170", fontSize: "60px" }}
+        />
+        <P>ADD FRIEND!!</P>
+      </Button>
+    </Link>
   );
 };
 

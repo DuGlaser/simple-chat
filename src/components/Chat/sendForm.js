@@ -25,7 +25,7 @@ export const Input = styled.textarea({
   }
 });
 
-const SendForm = () => {
+const SendForm = props => {
   return (
     <Div>
       <Input
@@ -34,10 +34,16 @@ const SendForm = () => {
         type="text"
         wrap="hard"
         placeholder="メッセージを入力してください"
+        onBlur={e => {
+          props.setMessage(e.target.value);
+        }}
       />
       <Icon
         icon={mailSend}
         style={{ color: "#e53170", fontSize: "24px", cursor: "pointer" }}
+        onClick={() => {
+          props.sendMessage();
+        }}
       />
     </Div>
   );

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import RoomHeader from "./roomHeader";
 import styled from "@emotion/styled";
 import MessageTile from "./messageTile";
 import SendForm from "./sendForm";
+import { db } from "../../config/firebaseConfig";
+import { UserContext } from "../../context";
 
 const Div = styled.div({
   width: "100%",
@@ -13,21 +15,46 @@ const Div = styled.div({
 
 const ChatArea = styled.div({
   width: "100%",
-  flexGrow: "1"
+  flexGrow: "1",
+  overflowY: "scroll"
 });
 
-const Chat = props => {
+const ChatComponent = props => {
+  const [message, setMessage] = useState();
+  const user = useContext(UserContext);
+
+  const sendMessage = () => {
+    if (String(message).trim()) {
+      db.collection("rooms")
+        .doc(props.roomId)
+        .collection("chats")
+        .add({
+          name: user.displayName,
+          avater: user.photoURL,
+          message: message,
+          time: new Date()
+        });
+    }
+  };
+
   return (
     <Div>
-      <RoomHeader roomName="DuGlaser" />
+      <RoomHeader roomName={props.roomName} />
       <ChatArea>
-        {/* {props.message.map(message => ( */}
-        {/*   <MessageTile message={message.body} /> */}
-        {/* ))} */}
+        {props.loading && <p>loading</p>}
+        {!props.loading &&
+          props.values.map(value => (
+            <MessageTile
+              key={value.id}
+              src={value.avater}
+              name={value.name}
+              message={value.message}
+            />
+          ))}
       </ChatArea>
-      <SendForm />
+      <SendForm setMessage={setMessage} sendMessage={sendMessage} />
     </Div>
   );
 };
 
-export default Chat;
+export default ChatComponent;
