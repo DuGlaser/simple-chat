@@ -4,7 +4,6 @@ import { UserContext } from "../../context";
 
 const SideContainer = () => {
   const user = useContext(UserContext);
-  console.log(user);
 
   return (
     <>
