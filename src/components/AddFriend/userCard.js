@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
 import { Icon } from "@iconify/react";
 import bxUserPlus from "@iconify/icons-bx/bx-user-plus";
@@ -80,10 +80,8 @@ export const AlreadyFriend = styled.button({
 });
 
 const UserCard = props => {
-  const [isfriend, setIsfriend] = useState(false);
-  console.log(isfriend);
   const myInfo = useContext(UserContext);
-  const [isFriend, loading, error] = useCollectionData(
+  const [isFriend] = useCollectionData(
     db
       .collection("users")
       .doc(myInfo.uid)
@@ -98,7 +96,7 @@ const UserCard = props => {
       <Name {...props}>{props.name}</Name>
       <Space />
       <AddButtonArea>
-        {isFriend == [] && (
+        {isFriend === [] && (
           <AddButton>
             <Icon
               icon={bxUserPlus}
@@ -109,7 +107,7 @@ const UserCard = props => {
             />
           </AddButton>
         )}
-        {!isFriend == [] && (
+        {!isFriend === [] && (
           <AlreadyFriend>
             <Icon
               icon={bxUserCheck}
