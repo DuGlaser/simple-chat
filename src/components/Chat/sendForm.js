@@ -36,6 +36,7 @@ const SendForm = props => {
         placeholder="メッセージを入力してください"
         onBlur={e => {
           props.setMessage(e.target.value);
+          e.target.value = "";
         }}
       />
       <Icon
