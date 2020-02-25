@@ -1,6 +1,6 @@
 import React from "react";
 import AddFriendButton from "./addFriendButton";
-// import FriendsList from "./friendsList";
+import FriendsList from "./friendsList";
 import FriendCard from "../common/Card/FriendCard";
 import SideListTitle from "./sideListTitle";
 import styled from "@emotion/styled";
@@ -34,8 +34,9 @@ const SideComponent = props => {
       <AddFriendButton />
       <Space />
       <SideListTitle />
-      <FriendListArea>{/* <FriendsList user={props.user} /> */}</FriendListArea>
-
+      <FriendListArea>
+        <FriendsList user={props.user} />
+      </FriendListArea>
       <LogInUser>
         <FriendCard
           width="80%"
