@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
 
 export const Div = styled.div(
   {
@@ -16,7 +15,7 @@ export const Div = styled.div(
 
 export const Img = styled.img({
   height: "100%",
-  borderRadius: "16px",
+  borderRadius: "12px",
   marginRight: "16px"
 });
 
@@ -34,15 +33,10 @@ export const Name = styled.p(
 
 const FriendCard = props => {
   return (
-    <Link
-      to={`/chat/${props.roomId}/${props.name}`}
-      style={{ textDecoration: "none" }}
-    >
-      <Div {...props}>
-        <Img src={props.src} />
-        <Name {...props}>{props.name}</Name>
-      </Div>
-    </Link>
+    <Div {...props}>
+      <Img src={props.src} />
+      <Name {...props}>{props.name}</Name>
+    </Div>
   );
 };
 
