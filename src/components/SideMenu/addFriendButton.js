@@ -34,7 +34,10 @@ export const P = styled.p({
 
 const AddFriendButton = () => {
   return (
-    <Link to="addfriend" style={{ decoration: "none", textDecoration: "none" }}>
+    <Link
+      to="/addfriend"
+      style={{ decoration: "none", textDecoration: "none" }}
+    >
       <Button>
         <Icon
           icon={bxUserPlus}

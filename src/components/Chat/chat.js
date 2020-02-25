@@ -5,6 +5,7 @@ import MessageTile from "./messageTile";
 import SendForm from "./sendForm";
 import { db } from "../../config/firebaseConfig";
 import { UserContext } from "../../context";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Div = styled.div({
   width: "100%",
@@ -17,6 +18,14 @@ const ChatArea = styled.div({
   width: "100%",
   flexGrow: "1",
   overflowY: "scroll"
+});
+
+const Center = styled.div({
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
 });
 
 const ChatComponent = props => {
@@ -41,7 +50,11 @@ const ChatComponent = props => {
     <Div>
       <RoomHeader roomName={props.roomName} />
       <ChatArea>
-        {props.loading && <p>loading</p>}
+        {props.loading && (
+          <Center>
+            <ClipLoader />
+          </Center>
+        )}
         {!props.loading &&
           props.values.map(value => (
             <MessageTile
