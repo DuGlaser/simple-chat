@@ -21,7 +21,7 @@ const Div2 = styled.div({
 });
 
 const Div8 = styled.div({
-  flexGrow: "1"
+  width: "calc(100% - 280px)"
 });
 
 function App() {
