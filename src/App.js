@@ -11,7 +11,8 @@ import "firebase/auth";
 import { db } from "./config/firebaseConfig";
 
 const Flex = styled.div({
-  display: "flex"
+  display: "flex",
+  width: "100%"
 });
 
 const Div2 = styled.div({
@@ -76,7 +77,7 @@ function App() {
             <Div8>
               {/* TODO:ADD router */}
               <Route exact path="/" component={Home} />
-              <Route path="/chat/:roomId" component={Chat} />
+              <Route path="/chat/:roomId/:roomName" component={Chat} />
             </Div8>
           </Flex>
         </UserContext.Provider>
