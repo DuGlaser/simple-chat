@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Div = styled.div(
   {
@@ -33,10 +34,15 @@ export const Name = styled.p(
 
 const FriendCard = props => {
   return (
-    <Div {...props}>
-      <Img src={props.src} />
-      <Name {...props}>{props.name}</Name>
-    </Div>
+    <Link
+      to={`/chat/${props.roomId}/${props.name}`}
+      style={{ textDecoration: "none" }}
+    >
+      <Div {...props}>
+        <Img src={props.src} />
+        <Name {...props}>{props.name}</Name>
+      </Div>
+    </Link>
   );
 };
 
