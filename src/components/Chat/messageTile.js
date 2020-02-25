@@ -5,8 +5,7 @@ export const Div = styled.div({
   width: "100%",
   padding: "24px",
   display: "flex",
-  borderBottom: "1px solid #E5E5E5",
-  boxSizing: "border-box"
+  borderBottom: "1px solid #E5E5E5"
 });
 
 export const Avater = styled.img({
@@ -19,6 +18,7 @@ export const Avater = styled.img({
 
 export const Wrapper = styled.div({
   display: "flex",
+  flexGrow: "1",
   flexDirection: "column"
 });
 
@@ -31,9 +31,10 @@ export const UserName = styled.p({
 });
 
 export const Message = styled.p({
+  width: "100%",
   fontSize: "18px",
   margin: "0",
-  whiteSpace: "pre"
+  whiteSpace: "pre-wrap"
 });
 
 const MessageTile = props => {
