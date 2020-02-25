@@ -29,14 +29,18 @@ const AddFriendComponent = props => {
       <SearchForm setUserName={props.setUserName} />
       <UserList>
         {props.users &&
-          props.users.map(user => {
+          props.users.map((user, index) => {
             return (
               <UserCard
                 width="80%"
                 height="120px"
                 name={user.name}
                 src={user.avater}
+                addFriend={props.addFriend}
                 color="#000"
+                key={user.id}
+                id={user.id}
+                index={index}
               />
             );
           })}
