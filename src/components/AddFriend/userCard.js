@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import bxUserPlus from "@iconify/icons-bx/bx-user-plus";
+import bxUserCheck from "@iconify/icons-bx/bx-user-check";
+import { db } from "../../config/firebaseConfig";
+import { UserContext } from "../../context";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 export const Div = styled.div(
   {
@@ -65,19 +68,55 @@ export const AddButton = styled.button({
   }
 });
 
+export const AlreadyFriend = styled.button({
+  width: "100%",
+  height: "80%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "#31E5BA",
+  borderRadius: "16px",
+  outline: "none"
+});
+
 const UserCard = props => {
+  const [isfriend, setIsfriend] = useState(false);
+  console.log(isfriend);
+  const myInfo = useContext(UserContext);
+  const [isFriend, loading, error] = useCollectionData(
+    db
+      .collection("users")
+      .doc(myInfo.uid)
+      .collection("friends")
+      .where("id", "==", props.id),
+    { isFriend: "id" }
+  );
+  console.log(isFriend);
   return (
     <Div {...props}>
       <Img src={props.src} />
       <Name {...props}>{props.name}</Name>
       <Space />
       <AddButtonArea>
-        <AddButton>
-          <Icon
-            icon={bxUserPlus}
-            style={{ color: "#fffffe", fontSize: "60px", height: "100%" }}
-          />
-        </AddButton>
+        {isFriend == [] && (
+          <AddButton>
+            <Icon
+              icon={bxUserPlus}
+              style={{ color: "#fffffe", fontSize: "60px", height: "100%" }}
+              onClick={() => {
+                props.addFriend(props.index);
+              }}
+            />
+          </AddButton>
+        )}
+        {!isFriend == [] && (
+          <AlreadyFriend>
+            <Icon
+              icon={bxUserCheck}
+              style={{ color: "#fffffe", fontSize: "60px", height: "100%" }}
+            />
+          </AlreadyFriend>
+        )}
       </AddButtonArea>
     </Div>
   );
