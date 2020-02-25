@@ -1,5 +1,5 @@
 # simple-chat
-![]（https://github.com/DuGlaser/simple-chat/workflows/CI/badge.svg?event=push）
+![CI](https://github.com/DuGlaser/simple-chat/workflows/CI/badge.svg?event=push)
 ## アプリケーションの概要
 1対1でチャットをすることができるアプリケーションです
 
