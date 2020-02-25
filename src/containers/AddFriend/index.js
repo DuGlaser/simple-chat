@@ -13,7 +13,6 @@ const AddFriendContainer = () => {
     db.collection("users").where("name", "==", String(userName)),
     { idField: "id" }
   );
-  console.log(result_user);
 
   const addFriendfunc = index => {
     const roomId = uuidv4();
@@ -44,6 +43,7 @@ const AddFriendContainer = () => {
     <>
       <AddFriendComponent
         setUserName={setUserName}
+        userName={userName}
         result_user={result_user}
         loading={loading}
         error={error}

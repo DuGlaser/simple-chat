@@ -37,6 +37,7 @@ const AddFriendComponent = props => {
                 name={user.name}
                 src={user.avater}
                 addFriend={props.addFriend}
+                userName={props.userName}
                 color="#000"
                 key={user.id}
                 id={user.id}

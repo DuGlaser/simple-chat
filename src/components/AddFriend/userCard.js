@@ -99,8 +99,6 @@ const UserCard = props => {
       .where("id", "==", props.id),
     { isFriend: "id" }
   );
-  console.log(props);
-  console.log("hi!");
   if (isFriend === undefined) {
     return (
       <Center>
@@ -115,7 +113,7 @@ const UserCard = props => {
       <Name {...props}>{props.name}</Name>
       <Space />
       <AddButtonArea>
-        {isFriend.length === 0 ? (
+        {isFriend.length === 0 && props.userName !== myInfo.displayName ? (
           <AddButton>
             <Icon
               icon={bxUserPlus}

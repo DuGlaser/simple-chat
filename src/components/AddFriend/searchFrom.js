@@ -8,7 +8,7 @@ const Div = styled.div({
 });
 const Input = styled.input({
   whiteSpace: "normal",
-  padding: " 10px",
+  padding: "10px",
   flexGrow: "1",
   border: "1px solid #d4d4d4",
   outline: "none",
@@ -17,7 +17,6 @@ const Input = styled.input({
 });
 
 const SearchForm = props => {
-  console.log(props);
   // TODO:low performance
   return (
     <Div>
