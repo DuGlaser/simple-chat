@@ -9,10 +9,11 @@ const AddFriendContainer = () => {
   const [userName, setUserName] = useState("");
   const myInfo = useContext(UserContext);
 
-  const [users, loading, error] = useCollectionData(
+  const [result_user, loading, error] = useCollectionData(
     db.collection("users").where("name", "==", String(userName)),
     { idField: "id" }
   );
+  console.log(result_user);
 
   const addFriendfunc = index => {
     const roomId = uuidv4();
@@ -20,13 +21,13 @@ const AddFriendContainer = () => {
       .doc(myInfo.uid)
       .collection("friends")
       .add({
-        avater: users[index].avater,
-        name: users[index].name,
-        id: users[index].id,
+        avater: result_user[index].avater,
+        name: result_user[index].name,
+        id: result_user[index].id,
         roomId: roomId
       });
     db.collection("users")
-      .doc(users[index].id)
+      .doc(result_user[index].id)
       .collection("friends")
       .add({
         avater: myInfo.photoURL,
@@ -39,12 +40,11 @@ const AddFriendContainer = () => {
       .set({});
   };
 
-  console.log(users);
   return (
     <>
       <AddFriendComponent
         setUserName={setUserName}
-        users={users}
+        result_user={result_user}
         loading={loading}
         error={error}
         addFriend={addFriendfunc}

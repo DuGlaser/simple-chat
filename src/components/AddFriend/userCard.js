@@ -6,6 +6,16 @@ import bxUserCheck from "@iconify/icons-bx/bx-user-check";
 import { db } from "../../config/firebaseConfig";
 import { UserContext } from "../../context";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import ClipLoader from "react-spinners/ClipLoader";
+
+const Center = styled.div({
+  margin: "40px",
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+});
 
 export const Div = styled.div(
   {
@@ -89,14 +99,23 @@ const UserCard = props => {
       .where("id", "==", props.id),
     { isFriend: "id" }
   );
-  console.log(isFriend);
+  console.log(props);
+  console.log("hi!");
+  if (isFriend === undefined) {
+    return (
+      <Center>
+        <ClipLoader size="60px" />
+      </Center>
+    );
+  }
+
   return (
     <Div {...props}>
       <Img src={props.src} />
       <Name {...props}>{props.name}</Name>
       <Space />
       <AddButtonArea>
-        {isFriend === [] && (
+        {isFriend.length === 0 ? (
           <AddButton>
             <Icon
               icon={bxUserPlus}
@@ -106,8 +125,7 @@ const UserCard = props => {
               }}
             />
           </AddButton>
-        )}
-        {!isFriend === [] && (
+        ) : (
           <AlreadyFriend>
             <Icon
               icon={bxUserCheck}

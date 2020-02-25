@@ -28,8 +28,8 @@ const AddFriendComponent = props => {
       <Space />
       <SearchForm setUserName={props.setUserName} />
       <UserList>
-        {props.users &&
-          props.users.map((user, index) => {
+        {props.result_user !== undefined &&
+          props.result_user.map((user, index) => {
             return (
               <UserCard
                 width="80%"
